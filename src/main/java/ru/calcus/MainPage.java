@@ -5,13 +5,15 @@ import org.testng.annotations.Test;
 
 public class MainPage extends AbstractWebDriver {
 
-   @Test
+    @Test(groups = {"smokeTest"})
     public void AT0001() {
+        //Запрашиваем главную страницу
+        driver.get("https://calcus.ru/");
 
-       driver.get("https://calcus.ru/");
-
-       String title = driver.getTitle();
-       Assert.assertEquals(title, "Онлайн калькуляторы и справочники");
+        //Получаем тайтл страницы в переменную
+        String title = driver.getTitle();
+        //Проверяем актуальный тайтл главной страницы с ожидаемым
+        Assert.assertEquals(title, "Онлайн калькуляторы и справочники");
 
    }
 }
