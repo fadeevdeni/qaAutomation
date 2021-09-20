@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="SmokeTest">
+    <test name="SmokeTestChrome">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="smokeTest" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="ru.calcus.MainPage"/>
+            <class name="ru.calcus.CarLoanPage"/>
+        </classes>
+    </test>
+
+</suite>
