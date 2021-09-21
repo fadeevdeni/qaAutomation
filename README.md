@@ -91,3 +91,12 @@ Email | Обязательное | Только буквы латинского 
 
 
 ![Optimized test data](https://downloader.disk.yandex.ru/preview/af51ba4a3f726a2b535c6f1bde8df9ecf15f27ed57518b4f2033d69a66e29c73/614a703a/fRkI-4NoOU1Hemy8T1zR8OhrnzdAUyc7O1TL5TzzlrN6zld7guTK19vgReRojqnGJYV9ylfkGGNA17OJgXokCg%3D%3D?uid=0&filename=2021-09-21_22-52-16.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+
+
+### Финальный тестовый набор данных
+
+
+Выбираем все полученные уникальные значения для каждого поля и переносим в другую [таблицу](https://docs.google.com/spreadsheets/d/19JYhOZvg3IUy6F1vktuP0XWFU1kQkEDs8nx5M4nAMtc/edit?usp=sharing).
+
+
+![Final data set](https://downloader.disk.yandex.ru/preview/16bad0e979549600a1092054134bf6c4dffac162737991710bf8d3595e250652/614a7be4/0W59DtL7BDPr8MSUqn0pa496-bzakS9WMg4GZnAxSNnqN5J5KS_sUIF2gvQUcFNo0n8BOrTsBmh3v6dkcQ72Uw%3D%3D?uid=0&filename=2021-09-21_23-42-06.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
