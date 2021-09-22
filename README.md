@@ -114,8 +114,6 @@ Email | Обязательное | Только буквы латинского 
 
 Для составления таблицы воспользуемся сервисом [Pairwise](https://pairwise.teremokgames.com/)
 
-![Pairwise method](https://downloader.disk.yandex.ru/preview/e73e233455cfdbb1136e633e047332bdb14fb05e7ddaae32aa4ca78923379622/614b22ce/SZRWDTUlGPFRXP2UUNftMkC8QmT3KKtEtVaWbj1lgqNV9OCuas_6o3bVZL4TThA3fHY1vR4CAyIztSPaDaTM4w%3D%3D?uid=0&filename=2021-09-22_11-34-15.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
-
 Генерировать таблицу будем в три этапа.
 
 * Для первого прохода скомбинируем валидные данные для генерации позитивных сценариев.
