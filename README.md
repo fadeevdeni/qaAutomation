@@ -100,3 +100,38 @@ Email | Обязательное | Только буквы латинского 
 
 
 ![Final data set](https://downloader.disk.yandex.ru/preview/16bad0e979549600a1092054134bf6c4dffac162737991710bf8d3595e250652/614a7be4/0W59DtL7BDPr8MSUqn0pa496-bzakS9WMg4GZnAxSNnqN5J5KS_sUIF2gvQUcFNo0n8BOrTsBmh3v6dkcQ72Uw%3D%3D?uid=0&filename=2021-09-21_23-42-06.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+
+
+Для тестирования полей формы авторазации получаем 28 комбинаций пар Логин/Пароль.
+Для тестирования полей формы калькулятора получаем 15 120 комбинаций.
+* Поле "Сумма кредита" - 20 вариантов
+* Поле "Срок кредита" - 36 вариантов
+* Поле "Процентная ставка" - 21 вариант
+
+Умножаем 20 * 36 * 21 = 15 120
+
+Сокращаем количество возможных комбинаций методом парного тестирования.
+
+Для составления таблицы воспользуемся сервисом [Pairwise](https://pairwise.teremokgames.com/)
+
+![Pairwise method](https://downloader.disk.yandex.ru/preview/e73e233455cfdbb1136e633e047332bdb14fb05e7ddaae32aa4ca78923379622/614b22ce/SZRWDTUlGPFRXP2UUNftMkC8QmT3KKtEtVaWbj1lgqNV9OCuas_6o3bVZL4TThA3fHY1vR4CAyIztSPaDaTM4w%3D%3D?uid=0&filename=2021-09-22_11-34-15.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+
+Генерировать таблицу будем в три этапа.
+
+* Для первого прохода скомбинируем валидные данные для генерации позитивных сценариев.
+* Для второго возьмем валидные данные на границах диапазонов.
+* Затем все остальные данные для генерации негативных сценариев.
+
+Аналогично поступаем с тестовыми данными для формы авторизации.
+
+
+
+После оптимизации получаем 718 комбинации.
+
+**Сокращение количества тестовых комбинаций более чем в 21 раз!**
+
+Данный метод позволяет кратно сокращать количество тест кейсов и времени на тестирование сохраняя полное покрытие системы тестами.
+
+Заносим их в отдельную [таблицу комбинированных тестовых значений](https://docs.google.com/spreadsheets/d/1O3_RfBnd_T2vQa9wMEx2THqiiHVyKnUaj_-HS7tXpyE/edit?usp=sharing)
+
+![Generated pairwise table](https://downloader.disk.yandex.ru/preview/17a5c043aa8f2a9932e9213807a10392b7b2dfb9b15c04d1d4e54153df9d3fd0/614bc708/BNZvTO8spSh1qWBmSsXNXCKODjft2_epuN5bT0Iv_M8Fl8lJjX8xT2SYoTTdxKawzEmxnFV_5hrkbU2YIgXOGA%3D%3D?uid=0&filename=2021-09-22_23-14-45.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
