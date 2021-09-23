@@ -7,8 +7,8 @@ import org.testng.annotations.Test;
 
 public class CarLoanPage extends AbstractWebDriver {
 
-    @Test(groups = {"smokeTest"})
-    public void AT0002() {
+    @Test(groups = {"smokeTest", "regress"})
+    public void AB0001() {
 
         //Запрашиваем страницу калькулятора расчета автокредита
         driver.get("https://calcus.ru/kalkulyator-avtokredita");
@@ -20,8 +20,8 @@ public class CarLoanPage extends AbstractWebDriver {
 
     }
 
-    @Test(groups = {"smokeTest"}, dependsOnMethods = {"AT0002"})
-    public void AT0003() {
+    @Test(groups = {"smokeTest, regress"}, dependsOnMethods = {"AB0001"})
+    public void AB0002() {
 
         //Запрашиваем страницу калькулятора расчет автокредита
         driver.get("https://calcus.ru/kalkulyator-avtokredita");

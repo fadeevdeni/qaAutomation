@@ -144,3 +144,16 @@ Email | Обязательное | Только буквы латинского 
 В учебных целях будут прописаны тест кейсы только для успешных вариантов и некоторой части неуспешных.
 
 ![expected result](https://downloader.disk.yandex.ru/preview/a343138c024cc31755d49341ec4b31e692a8e8cef0918b1ca64c17c2c131ed88/614d1414/6Gy4O-JTNNVpoYjAb-CJmkbzOzLMkyOxh50waq8FrNqnzFaczjfT18-HlcCQa_7v5XZp_b3USI4ftmAMhH5CEw%3D%3D?uid=0&filename=2021-09-23_22-55-55.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+
+## Тест-кейсы
+
+В данном разделе опишем тест-кейсы на основе которых будут разрабатываться авто-тесты.
+
+Помимо тестирования полей форм так-же опишем несколько UI тестов для каждой страницы.
+
+### Главная страница
+
+ID|Заголовок|Шаги|Тестовые данные|Ожидаемый результат|Теги
+:---:|:---:|:---:|:---:|:---:|:---:
+[AA0001](https://github.com/fadeevdeni/qaAutomation/blob/7fb88c0a84c22d25366bdd7414b9e7ddb5a5aabd/src/main/java/ru/calcus/MainPage.java#L9) | Проверка доступности главной страницы | 1. Открыть главную страницу [calcus.ru](https://calcus.ru/) 2. Проверить тайтл страницы | — | "Онлайн калькуляторы и справочники" | "smokeTest", "regress"
+AA0002 | Проверка наличия на главной странице формы авторизации| 1.Открыть главную страницу [calcus.ru](https://calcus.ru/) 2. Найти в исходном коде инпуты Email и Password | — | На странице в исходном коде есть поля ввода Email  и пароля | "smokeTest", "regress"
