@@ -25,10 +25,50 @@ public class MainPage extends AbstractWebDriver {
        //Запрашиваем главную страницу
        driver.get("https://calcus.ru/");
 
-       WebElement login = driver.findElement(By.xpath("//input[@type='email']"));
+       //Находим поле ввода логина
+       WebElement login = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='email']"));
+       //Проверяем что элемент найден
        Assert.assertNotNull(login);
 
-       WebElement password = driver.findElement(By.xpath("//input[@type='password']"));
+       //Находим поле ввода пароля
+       WebElement password = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='password']"));
+       //Проверяем что элемент найден
        Assert.assertNotNull(password);
    }
+
+    //После отладки установить зависимость dependsOnMethods = {"AA0001", "AA0002"}
+    @Test(groups = {"smokeTest", "regress"})
+    public void AA0003() {
+
+        String loginTx = "ronhabb@yandex.ru";
+        String passwordTx = "Qwerty123";
+
+
+        //Запрашиваем главную страницу
+        driver.get("https://calcus.ru/");
+
+        //Находим ссылку для открытия формы авторизации и кликаем по ней
+        WebElement loginModal = driver.findElement(By.xpath("//a[@href='#loginModal']"));
+        //Ожидаем что ссылка на странице есть
+        Assert.assertNotNull(loginModal);
+
+        //Если предыдущее ожидание сработало кликаем по ссылке, открывается модальное окно
+        loginModal.click();
+
+        //Находим поле ввода логина и отправляем туда данные для авторизации
+        WebElement login = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='email']"));
+        login.sendKeys(loginTx);
+
+        //Находим поле ввода пароля и отправляем туда данные для авторизации
+        WebElement password = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='password']"));
+        password.sendKeys(passwordTx);
+
+        //Кликаем кнопку "Войти"
+        driver.findElement(By.xpath("//div[@id='loginModal']//button[@type='submit']")).click();
+
+        //Проверяем что на странице вместо ссылки "Вход" теперь прописан указанный имейл адрес
+        WebElement loginText = driver.findElement(By.xpath("//div[@class='nav-item dropdown']//span[2]"));
+        Assert.assertEquals(loginText.getText(), loginTx);
+
+    }
 }
