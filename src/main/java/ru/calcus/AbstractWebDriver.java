@@ -5,39 +5,46 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.*;
 
+import java.time.Duration;
+
 public class AbstractWebDriver {
 
-    public static WebDriver driver;
+    public WebDriver driver;
+
+    //Устанавливаем время ожидания ответа страницы
+    private static final Integer webDriverWaitTime = 10;
 
     private static final String webDriversPath = "src/webdrivers/";
 
     @Parameters({"browser"})
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional String browser) {
 
         if (browser == null) {
-            browser = "test";
+            browser = "chrome";
         }
 
         if (browser.equals("chrome")) {
 
             System.setProperty("webdriver.chrome.driver", "" + webDriversPath + "chromedriver.exe");
             driver = new ChromeDriver();
-            System.out.println(browser);
         }
 
-        if (browser.equals("edge")) {
+        else if (browser.equals("edge")) {
 
             System.setProperty("webdriver.edge.driver", "" + webDriversPath + "msedgedriver.exe");
             driver = new EdgeDriver();
-            System.out.println(browser);
-
         }
+
+        //Устанавливаем неявное время ожидания ответа страницы для драйвера
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(webDriverWaitTime));
+
+        System.out.println(browser);
 
     }
 
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void close() {
 
         if (driver != null)
