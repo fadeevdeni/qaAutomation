@@ -20,7 +20,7 @@ public class CarLoanPage extends AbstractWebDriver {
 
     }
 
-    @Test(groups = {"smokeTest, regress"}, dependsOnMethods = {"AB0001"})
+    @Test(groups = {"smokeTest", "regress"}, dependsOnMethods = {"AB0001"})
     public void AB0002() {
 
         //Запрашиваем страницу калькулятора расчет автокредита
