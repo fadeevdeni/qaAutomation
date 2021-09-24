@@ -1,5 +1,6 @@
 package ru.calcus;
 
+import Utils.LoginForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -55,16 +56,8 @@ public class MainPage extends AbstractWebDriver {
         //Если предыдущее ожидание сработало кликаем по ссылке, открывается модальное окно
         loginModal.click();
 
-        //Находим поле ввода логина и отправляем туда данные для авторизации
-        WebElement login = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='email']"));
-        login.sendKeys(loginTx);
-
-        //Находим поле ввода пароля и отправляем туда данные для авторизации
-        WebElement password = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='password']"));
-        password.sendKeys(passwordTx);
-
-        //Кликаем кнопку "Войти"
-        driver.findElement(By.xpath("//div[@id='loginModal']//button[@type='submit']")).click();
+        LoginForm lf = new LoginForm();
+        lf.login(driver,loginTx, passwordTx);
 
         //Проверяем что на странице вместо ссылки "Вход" теперь прописан указанный имейл адрес
         WebElement loginText = driver.findElement(By.xpath("//div[@class='nav-item dropdown']//span[2]"));
