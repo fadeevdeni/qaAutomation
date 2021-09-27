@@ -19,6 +19,10 @@
 
 ![Allure report](https://downloader.disk.yandex.ru/preview/1e69477e38b5b318a25410e2216f9dbe16ce6a9da58f6007babd03168ed548c9/6152572f/luDh0VO2X79FyZgJ9cKczajdWspgKZai9GGp7xPHmIYBjueMEGp_fEhFnkGImaawJbVUWhgGhXzCYlvGR8ZtBg%3D%3D?uid=0&filename=2021-09-27_22-43-35.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
+> Кросс-браузерное тестирование реализовано через передачу значения переменной browser в настройках профилей запуска тестов.
+
+![TestNg configeuration](https://downloader.disk.yandex.ru/preview/d702edf5c290a617408f92fa182e6167ea3f8633c1b505d484f3304b2e540ba6/615257c0/IwMLOXTzZRAvOLw3pXfqEO8PuN4Y4_pCjMNY84PS8LhpxxAVnWcayfGv6Op0ErVD2IBrP6ArUw9UWPbzG0UiuA%3D%3D?uid=0&filename=2021-09-27_22-45-58.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+
 
 ## Тест-анализ
 Данный тест-анализ проведен на основе анализа готового продукта. Возможны некоторые допущения и неточности.
