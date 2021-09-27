@@ -1,6 +1,10 @@
 package ru.calcus;
 
 import Utils.AppManager;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Epics;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -8,6 +12,9 @@ import org.testng.annotations.Test;
 
 public class MainPage extends AbstractWebDriver {
 
+    @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Проверка доступности главой страницы")
     @Test(groups = {"smokeTest", "regress"})
     public void AA0001() {
         //Запрашиваем главную страницу
@@ -20,28 +27,34 @@ public class MainPage extends AbstractWebDriver {
 
    }
 
-   @Test(groups = {"smokeTest", "regress"}, dependsOnMethods = {"AA0001"})
-   public void AA0002() {
+    @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Проверка существования модального окна и формы авторизации на странице")
+    @Test(groups = {"smokeTest", "regress"}, dependsOnMethods = {"AA0001"})
+    public void AA0002() {
 
-       //Запрашиваем главную страницу
-       driver.get("https://calcus.ru/");
+        //Запрашиваем главную страницу
+        driver.get("https://calcus.ru/");
 
-       //Находим ссылку для открытия формы авторизации и кликаем по ней
-       WebElement loginModal = driver.findElement(By.xpath("//a[@href='#loginModal']"));
-       //Ожидаем что ссылка на странице есть
-       Assert.assertNotNull(loginModal);
+        //Находим ссылку для открытия формы авторизации и кликаем по ней
+           WebElement loginModal = driver.findElement(By.xpath("//a[@href='#loginModal']"));
+           //Ожидаем что ссылка на странице есть
+           Assert.assertNotNull(loginModal);
 
-       //Находим поле ввода логина
-       WebElement login = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='email']"));
-       //Проверяем что элемент найден
-       Assert.assertNotNull(login);
+           //Находим поле ввода логина
+           WebElement login = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='email']"));
+           //Проверяем что элемент найден
+           Assert.assertNotNull(login);
 
-       //Находим поле ввода пароля
-       WebElement password = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='password']"));
-       //Проверяем что элемент найден
-       Assert.assertNotNull(password);
-   }
+           //Находим поле ввода пароля
+           WebElement password = driver.findElement(By.xpath("//div[@id='loginModal']//input[@type='password']"));
+           //Проверяем что элемент найден
+           Assert.assertNotNull(password);
+    }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Успешная авторизация")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0003() {
 
@@ -60,6 +73,9 @@ public class MainPage extends AbstractWebDriver {
 
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пустое поле пароля")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0004() {
 
@@ -77,6 +93,9 @@ public class MainPage extends AbstractWebDriver {
 
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пустое поле логина")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0005() {
 
@@ -93,6 +112,9 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Неверный пароль")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0006() {
 
@@ -115,6 +137,9 @@ public class MainPage extends AbstractWebDriver {
 
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Неверный имейл")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0007() {
 
@@ -136,6 +161,9 @@ public class MainPage extends AbstractWebDriver {
 
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пропущен знак \"@\"")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0008() {
 
@@ -153,6 +181,9 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пропущена часть адреса до знака \"@\"")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0009() {
 
@@ -169,6 +200,9 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пропущена часть адреса после \"@\"")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0010() {
 
@@ -186,6 +220,9 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пробел в начала логина")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0011() {
 
@@ -204,6 +241,9 @@ public class MainPage extends AbstractWebDriver {
 
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пробел в конце логина")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0012() {
 
@@ -222,6 +262,9 @@ public class MainPage extends AbstractWebDriver {
 
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пробел посередине адреса имейл до знака \"@\"")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0013() {
 
@@ -237,6 +280,9 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Пробел в части адреса после знака \"@\"")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0014() {
 
@@ -252,6 +298,9 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Кириллица в имейл адресе")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0015() {
 
@@ -267,6 +316,9 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Кириллица в адресе имейл до знака \"@\"")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0016() {
 
@@ -283,6 +335,9 @@ public class MainPage extends AbstractWebDriver {
     }
 
     //Здесь умышленно допущена ошибка для демонстрации. На сайте неверно отрабатывает логика валидации.
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Кириллица в адресе имейл после знака \"@\"")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0017() {
 
@@ -298,6 +353,9 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка авторизации на главной странице")
+    @Story(value = "Кириллица в адресе и пропущен знак \"@\"")
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0018() {
 
