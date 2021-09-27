@@ -83,6 +83,7 @@ public class MainPage extends AbstractWebDriver {
         String loginTx = "";
         String passwordTx = "Qwerty123";
         String loginInputError = "Заполните это поле.";
+
         //Запрашиваем главную страницу
         driver.get("https://calcus.ru/");
 
@@ -102,8 +103,8 @@ public class MainPage extends AbstractWebDriver {
         //Запрашиваем главную страницу
         driver.get("https://calcus.ru/");
 
-        AppManager lf = new AppManager();
-        lf.login(driver, loginTx, passwordTx);
+        AppManager appMan = new AppManager();
+        appMan.login(driver, loginTx, passwordTx);
 
         WebElement authorizationError = driver.findElement(By
                 .xpath("//form[@class='js-auth-form']//div[@class='mb-3 alert alert-danger auth-error-placeholder']"));
@@ -133,7 +134,6 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(authorizationError.getAttribute("style"), "display: block;");
         Assert.assertEquals(authorizationError.getText(), authorizationMessage);
 
-
     }
 
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
@@ -143,6 +143,7 @@ public class MainPage extends AbstractWebDriver {
         String passwordTx = "Qwerty123";
         String loginInputError = "Адрес электронной почты должен содержать символ \"@\". " +
                 "В адресе \"ronhabbyandex.ru\" отсутствует символ \"@\".";
+
         //Запрашиваем главную страницу
         driver.get("https://calcus.ru/");
 
@@ -158,6 +159,7 @@ public class MainPage extends AbstractWebDriver {
         String loginTx = "@yandex.ru";
         String passwordTx = "Qwerty123";
         String loginInputError = "Введите часть адреса до символа \"@\". Адрес \"@yandex.ru\" неполный.";
+
         //Запрашиваем главную страницу
         driver.get("https://calcus.ru/");
 
@@ -173,6 +175,7 @@ public class MainPage extends AbstractWebDriver {
         String loginTx = "ronhabb@";
         String passwordTx = "Qwerty123";
         String loginInputError = "Введите часть адреса после символа \"@\". Адрес \"ronhabb@\" неполный.";
+
         //Запрашиваем главную страницу
         driver.get("https://calcus.ru/");
 
@@ -279,6 +282,7 @@ public class MainPage extends AbstractWebDriver {
         Assert.assertEquals(loginInputError, validationErrors[0]);
     }
 
+    //Здесь умышленно допущена ошибка для демонстрации. На сайте неверно отрабатывает логика валидации.
     @Test(groups = {"regress"}, dependsOnMethods = {"AA0001", "AA0002"})
     public void AA0017() {
 
