@@ -1,3 +1,16 @@
+#IDEA
+.idea
+target
+*.iml
+*.ipr
+build
+schema
+.gradle
+
+#Allure
+.allure
+/allure-results/
+
 # Compiled class file
 *.class
 
