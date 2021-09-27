@@ -9,7 +9,7 @@ schema
 
 #Allure
 .allure
-/allure-results/
+/allure-results/*.json
 
 # Compiled class file
 *.class
