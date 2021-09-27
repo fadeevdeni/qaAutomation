@@ -1,6 +1,10 @@
 package ru.calcus;
 
 import Utils.AppManager;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Epics;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -8,6 +12,9 @@ import org.testng.annotations.Test;
 
 public class CarLoanPage extends AbstractWebDriver {
 
+    @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Проверка доступности страницы калькулятора")
     @Test(groups = {"smokeTest", "regress"})
     public void AB0001() {
 
@@ -21,6 +28,9 @@ public class CarLoanPage extends AbstractWebDriver {
 
     }
 
+    @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Проверка существования полей ввода калькулятора")
     @Test(groups = {"smokeTest", "regress"})
     public void AB0002() {
 
@@ -49,6 +59,9 @@ public class CarLoanPage extends AbstractWebDriver {
 
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Успешный расчет")
     @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
     public void AB0003() {
 
@@ -76,6 +89,9 @@ public class CarLoanPage extends AbstractWebDriver {
 
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Успешный расчет")
     @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
     public void AB0004() {
 
@@ -102,6 +118,9 @@ public class CarLoanPage extends AbstractWebDriver {
         Assert.assertEquals(actualData[2], assertTotalPaid);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Успешный расчет")
     @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
     public void AB0005() {
 
@@ -128,6 +147,9 @@ public class CarLoanPage extends AbstractWebDriver {
         Assert.assertEquals(actualData[2], assertTotalPaid);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Успешный расчет")
     @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
     public void AB0006() {
 
@@ -154,6 +176,9 @@ public class CarLoanPage extends AbstractWebDriver {
         Assert.assertEquals(actualData[2], assertTotalPaid);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Проверка граничных значений")
     @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
     public void AB0007() {
 
@@ -180,6 +205,9 @@ public class CarLoanPage extends AbstractWebDriver {
         Assert.assertEquals(actualData[2], assertTotalPaid);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Проверка граничных значений")
     @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
     public void AB0008() {
 
@@ -206,6 +234,9 @@ public class CarLoanPage extends AbstractWebDriver {
         Assert.assertEquals(actualData[2], assertTotalPaid);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Проверка граничных значений")
     @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
     public void AB0009() {
 
@@ -232,6 +263,9 @@ public class CarLoanPage extends AbstractWebDriver {
         Assert.assertEquals(actualData[2], assertTotalPaid);
     }
 
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Проверка граничных значений")
     @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
     public void AB0010() {
 
