@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,8 +36,7 @@ public class ApplicationManager {
 
         for (String inputXpath : inputXpaths) {
 
-            WebElement element = driver.findElement(By.xpath(inputXpath));
-            Assert.assertNotNull(element);
+            Assert.assertNotNull(By.xpath(inputXpath).findElement(driver));
 
         }
 
@@ -55,8 +53,7 @@ public class ApplicationManager {
     public void FillInInputs(@NotNull WebDriver driver, String[][] inputs) {
 
         for (String[] items : inputs) {
-            WebElement input = driver.findElement(By.xpath(items[0]));
-            input.sendKeys(items[1]);
+            driver.findElement(By.xpath(items[0])).sendKeys(items[1]);
 
         }
 
@@ -66,8 +63,7 @@ public class ApplicationManager {
     public void SelectElement(@NotNull WebDriver driver, String[][] selectors) {
 
         for (String[] select : selectors) {
-            WebElement selectElement = driver.findElement(By.xpath(select[0]));
-            Select selector = new Select(selectElement);
+            Select selector = new Select(driver.findElement(By.xpath(select[0])));
             selector.selectByValue(select[1]);
 
         }
@@ -90,8 +86,7 @@ public class ApplicationManager {
 
         for (String[] assertElement : assertElements) {
 
-            WebElement element = driver.findElement(By.xpath(assertElement[0]));
-            Assert.assertEquals(element.getText(), assertElement[1]);
+            Assert.assertEquals(driver.findElement(By.xpath(assertElement[0])).getText(), assertElement[1]);
 
         }
     }
