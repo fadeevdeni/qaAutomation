@@ -80,12 +80,38 @@ public class ApplicationManager {
         }
     }
 
+    @Step(value = "Ожидаем результат")
+    public void WaitElement(@NotNull WebDriver driver, String waitElementXpath) {
+
+        WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(waitElementXpath)));
+
+    }
+
     @Step(value = "Сравниваем полученные результаты")
     public void AssertResults(@NotNull WebDriver driver, String[][] assertElements) {
 
         for (String[] assertElement : assertElements) {
 
-            Assert.assertEquals(driver.findElement(By.xpath(assertElement[0])).getText(), assertElement[1]);
+            Assert.assertEquals(driver.findElement(By.xpath(assertElement[0])).getText(), assertElement[1].trim());
+
+        }
+    }
+
+    @Step(value = "Сравниваем полученный результат")
+    public void AssertResult(@NotNull WebDriver driver, String assertElementXpath, String assertElement) {
+
+            Assert.assertEquals(driver.findElement(By.xpath(assertElementXpath)).getText(), assertElement.trim());
+    }
+
+    @Step(value = "Проверяем ошибки валидации")
+    public void AssertValidationErrors(@NotNull WebDriver driver, String[][] validationErrors) {
+
+        for (String[] validationError : validationErrors) {
+
+            Assert.assertEquals(driver.findElement(
+                    By.xpath(validationError[0])).getAttribute("validationMessage"), validationError[1]);
 
         }
     }

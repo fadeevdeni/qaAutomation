@@ -220,8 +220,8 @@ public class CarLoanCalcTests extends AbstractWebDriver {
 
         String[][] assertResults = {
                 {monthlyPaymentXpath, "0,00"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "1"}, // Сумма начисленных процентов
-                {totalPayXpath, "0,01"} // Общая стоимость кредита
+                {overPaymentXpath, "-0,01"}, // Сумма начисленных процентов
+                {totalPayXpath, "0,00"} // Общая стоимость кредита
         };
 
         CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
