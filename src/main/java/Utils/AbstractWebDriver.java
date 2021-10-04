@@ -1,4 +1,4 @@
-package ru.calcus;
+package Utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,7 +18,7 @@ public class AbstractWebDriver {
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp(@Optional String browser) {
+    public final void setUp(@Optional String browser) {
 
         if (browser == null) {
             browser = "chrome";
@@ -39,13 +39,11 @@ public class AbstractWebDriver {
         //Устанавливаем неявное время ожидания ответа страницы для драйвера
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(webDriverWaitTime));
 
-        System.out.println(browser);
-
     }
 
 
     @AfterMethod(alwaysRun = true)
-    public void close() {
+    public final void close() {
 
         if (driver != null)
             driver.quit();
