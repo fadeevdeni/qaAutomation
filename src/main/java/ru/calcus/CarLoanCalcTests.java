@@ -27,26 +27,26 @@ public class CarLoanCalcTests extends AbstractWebDriver {
     private void CalcTestConstructor(String[][] inputsData, String[][] selectPeriodType,
                                      String paymentType, String[][] assertResults) {
 
-        appManager.GetPage(driver, url);
+        appManager.GetPage(url);
 
-        appManager.ClickElement(driver, bySumCalcXpath);
+        appManager.ClickElement(bySumCalcXpath);
 
-        appManager.FillInInputs(driver, inputsData);
+        appManager.FillInInputs(inputsData);
 
-        appManager.SelectElement(driver, selectPeriodType);
+        appManager.SelectElement(selectPeriodType);
 
         if(paymentType.equals("annuitet")) {
-            appManager.ClickElement(driver, annuitetRadioXpath);
+            appManager.ClickElement(annuitetRadioXpath);
         }
         else if(paymentType.equals("different")) {
-            appManager.ClickElement(driver, differentRadioXpath);
+            appManager.ClickElement(differentRadioXpath);
         }
 
-        appManager.ClickElement(driver, calcButton);
+        appManager.ClickElement(calcButton);
 
-        appManager.WaitElements(driver, assertResults);
+        appManager.WaitElements(assertResults);
 
-        appManager.AssertResults(driver, assertResults);
+        appManager.AssertResults(assertResults);
 
     }
 
@@ -59,8 +59,8 @@ public class CarLoanCalcTests extends AbstractWebDriver {
 
         String expectedTitle = "Калькулятор автокредита";
 
-        appManager.GetPage(driver, url);
-        appManager.CheckTitle(driver, expectedTitle);
+        appManager.GetPage(url);
+        appManager.CheckTitle(expectedTitle);
     }
 
     @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
@@ -78,11 +78,11 @@ public class CarLoanCalcTests extends AbstractWebDriver {
                 differentRadioXpath
         };
 
-        appManager.GetPage(driver, url);
+        appManager.GetPage(url);
         //Активируем второй вариант расчета кредита
-        appManager.ClickElement(driver, bySumCalcXpath);
+        appManager.ClickElement(bySumCalcXpath);
 
-        appManager.CheckInputs(driver, inputXpaths);
+        appManager.CheckInputs(inputXpaths);
 
     }
 
