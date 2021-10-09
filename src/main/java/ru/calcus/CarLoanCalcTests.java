@@ -6,7 +6,11 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Epics;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.util.Iterator;
 
 public class CarLoanCalcTests extends AbstractWebDriver {
 
@@ -23,9 +27,78 @@ public class CarLoanCalcTests extends AbstractWebDriver {
     private static final String monthlyPaymentXpath = "//div[@class='calc-result-value result-placeholder-monthlyPayment']";
     private static final String overPaymentXpath = "//div[@class='calc-result-value result-placeholder-overPayment']";
     private static final String totalPayXpath = "//div[@class='calc-result-value result-placeholder-totalPaid']";
+    private static final String PATH_TO_DATA_PROVIDER = "src/testDataProviders/CarLoanCalc/";
 
-    private void CalcTestConstructor(String[][] inputsData, String[][] selectPeriodType,
-                                     String paymentType, String[][] assertResults) {
+    @DataProvider(name = "TestDataDP")
+    public Iterator<Object[]> TestData() throws IOException {
+        return appManager.parseCsvData(PATH_TO_DATA_PROVIDER + "TestData.csv");
+    }
+
+    @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Проверка доступности страницы калькулятора")
+    @Test(groups = {"smokeTest", "regress"})
+    public void CheckPageAvailable() {
+
+        String expectedTitle = "Калькулятор автокредита";
+
+        appManager.SetUpDriver(driver);
+        appManager.GetPage(url);
+        appManager.CheckTitle(expectedTitle);
+    }
+
+    @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Проверка существования полей ввода калькулятора")
+    @Test(groups = {"smokeTest", "regress"}, dependsOnMethods = {"CheckPageAvailable"})
+    public void CheckInputs() {
+
+        String[] inputXpaths = {
+                creditSumXpath,
+                periodXpath,
+                percentXpath,
+                periodTypeSelectorXpath,
+                annuitetRadioXpath,
+                differentRadioXpath
+        };
+
+        appManager.SetUpDriver(driver);
+        appManager.GetPage(url);
+        //Активируем второй вариант расчета кредита
+        appManager.ClickElement(bySumCalcXpath);
+
+        appManager.CheckInputs(inputXpaths);
+
+    }
+
+    @Epic(value = "Регресс")
+    @Feature(value = "Проверка калькулятора расчета автокредита")
+    @Story(value = "Успешный расчет")
+    @Test(dataProvider = "TestDataDP",
+            groups = {"regress"},
+            dependsOnMethods = {"CheckPageAvailable", "CheckInputs"})
+    public void CarLoanCalculator(String creditSum, String period, String periodType,
+                                  String percent, String paymentType,
+                                  String monthlyPayment, String overPayment, String totalPay) {
+
+        //Входные данные
+        String[][] inputsData = {
+                {creditSumXpath, creditSum}, // Сумма кредита
+                {periodXpath, period}, // Период кредитования
+                {percentXpath, percent} // Процентная ставка
+        };
+
+        String[][] selectPeriodType = {
+                {periodTypeSelectorXpath, periodType} // (M)onth or (Y)ear
+        };
+
+        String[][] assertResults = {
+                {monthlyPaymentXpath, monthlyPayment}, // Сумма ежемесячного платежа
+                {overPaymentXpath, overPayment}, // Сумма начисленных процентов
+                {totalPayXpath, totalPay} // Общая стоимость кредита
+        };
+
+        appManager.SetUpDriver(driver);
 
         appManager.GetPage(url);
 
@@ -48,266 +121,5 @@ public class CarLoanCalcTests extends AbstractWebDriver {
 
         appManager.AssertResults(assertResults);
 
-    }
-
-
-    @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Проверка доступности страницы калькулятора")
-    @Test(groups = {"smokeTest", "regress"})
-    public void AB0001() {
-
-        String expectedTitle = "Калькулятор автокредита";
-
-        appManager.GetPage(url);
-        appManager.CheckTitle(expectedTitle);
-    }
-
-    @Epics(value = {@Epic(value = "Smoke Test"), @Epic(value = "Регресс")})
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Проверка существования полей ввода калькулятора")
-    @Test(groups = {"smokeTest", "regress"})
-    public void AB0002() {
-
-        String[] inputXpaths = {
-                creditSumXpath,
-                periodXpath,
-                percentXpath,
-                periodTypeSelectorXpath,
-                annuitetRadioXpath,
-                differentRadioXpath
-        };
-
-        appManager.GetPage(url);
-        //Активируем второй вариант расчета кредита
-        appManager.ClickElement(bySumCalcXpath);
-
-        appManager.CheckInputs(inputXpaths);
-
-    }
-
-    @Epic(value = "Регресс")
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Успешный расчет")
-    @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
-    public void AB0003() {
-
-        //Входные данные
-        String[][] inputsData = {
-                {creditSumXpath,"4000000"}, // Сумма кредита
-                {periodXpath, "60"}, // Период кредитования
-                {percentXpath, "20"} // Процентная ставка
-        };
-
-        String[][] selectPeriodType = {
-                {periodTypeSelectorXpath, "M"} // (M)onth or (Y)ear
-        };
-
-        String paymentType = "annuitet"; //annuitet(type 1) or different(type 2)
-
-        String[][] assertResults = {
-                {monthlyPaymentXpath, "105 975,53"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "2 358 531,80"}, // Сумма начисленных процентов
-                {totalPayXpath, "6 358 531,80"} // Общая стоимость кредита
-        };
-
-        CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
-
-    }
-
-    @Epic(value = "Регресс")
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Успешный расчет")
-    @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
-    public void AB0004() {
-
-        //Входные данные
-        String[][] inputsData = {
-                {creditSumXpath,"4000000"}, // Сумма кредита
-                {periodXpath, "60"}, // Период кредитования
-                {percentXpath, "20"} // Процентная ставка
-        };
-
-        String[][] selectPeriodType = {
-                {periodTypeSelectorXpath, "M"} // (M)onth or (Y)ear
-        };
-
-        String paymentType = "different"; //annuitet(type 1) or different(type 2)
-
-        String[][] assertResults = {
-                {monthlyPaymentXpath, "133 333,33 … 67 777,78"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "2 033 333,33"}, // Сумма начисленных процентов
-                {totalPayXpath, "6 033 333,33"} // Общая стоимость кредита
-        };
-
-        CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
-    }
-
-    @Epic(value = "Регресс")
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Успешный расчет")
-    @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
-    public void AB0005() {
-
-        //Входные данные
-        String[][] inputsData = {
-                {creditSumXpath,"4000000"}, // Сумма кредита
-                {periodXpath, "3"}, // Период кредитования
-                {percentXpath, "20"} // Процентная ставка
-        };
-
-        String[][] selectPeriodType = {
-                {periodTypeSelectorXpath, "Y"} // (M)onth or (Y)ear
-        };
-
-        String paymentType = "annuitet"; //annuitet(type 1) or different(type 2)
-
-        String[][] assertResults = {
-                {monthlyPaymentXpath, "148 654,33"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "1 351 555,88"}, // Сумма начисленных процентов
-                {totalPayXpath, "5 351 555,88"} // Общая стоимость кредита
-        };
-
-        CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
-    }
-
-    @Epic(value = "Регресс")
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Успешный расчет")
-    @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
-    public void AB0006() {
-
-        //Входные данные
-        String[][] inputsData = {
-                {creditSumXpath,"4000000"}, // Сумма кредита
-                {periodXpath, "3"}, // Период кредитования
-                {percentXpath, "20"} // Процентная ставка
-        };
-
-        String[][] selectPeriodType = {
-                {periodTypeSelectorXpath, "Y"} // (M)onth or (Y)ear
-        };
-
-        String paymentType = "different"; //annuitet(type 1) or different(type 2)
-
-        String[][] assertResults = {
-                {monthlyPaymentXpath, "177 777,78 … 112 962,96"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "1 233 333,33"}, // Сумма начисленных процентов
-                {totalPayXpath, "5 233 333,33"} // Общая стоимость кредита
-        };
-
-        CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
-    }
-
-    @Epic(value = "Регресс")
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Проверка граничных значений")
-    @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
-    public void AB0007() {
-
-        //Входные данные
-        String[][] inputsData = {
-                {creditSumXpath,"0,01"}, // Сумма кредита
-                {periodXpath, "1"}, // Период кредитования
-                {percentXpath, "0,01"} // Процентная ставка
-        };
-
-        String[][] selectPeriodType = {
-                {periodTypeSelectorXpath, "Y"} // (M)onth or (Y)ear
-        };
-
-        String paymentType = "annuitet"; //annuitet(type 1) or different(type 2)
-
-        String[][] assertResults = {
-                {monthlyPaymentXpath, "0,00"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "-0,01"}, // Сумма начисленных процентов
-                {totalPayXpath, "0,00"} // Общая стоимость кредита
-        };
-
-        CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
-    }
-
-    @Epic(value = "Регресс")
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Проверка граничных значений")
-    @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
-    public void AB0008() {
-
-        //Входные данные
-        String[][] inputsData = {
-                {creditSumXpath,"0,01"}, // Сумма кредита
-                {periodXpath, "1"}, // Период кредитования
-                {percentXpath, "0,01"} // Процентная ставка
-        };
-
-        String[][] selectPeriodType = {
-                {periodTypeSelectorXpath, "Y"} // (M)onth or (Y)ear
-        };
-
-        String paymentType = "different"; //annuitet(type 1) or different(type 2)
-
-        String[][] assertResults = {
-                {monthlyPaymentXpath, "0,00 … 0,00"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "0,00"}, // Сумма начисленных процентов
-                {totalPayXpath, "0,01"} // Общая стоимость кредита
-        };
-
-        CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
-    }
-
-    @Epic(value = "Регресс")
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Проверка граничных значений")
-    @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
-    public void AB0009() {
-
-        //Входные данные
-        String[][] inputsData = {
-                {creditSumXpath,"0,01"}, // Сумма кредита
-                {periodXpath, "1"}, // Период кредитования
-                {percentXpath, "999,99"} // Процентная ставка
-        };
-
-        String[][] selectPeriodType = {
-                {periodTypeSelectorXpath, "M"} // (M)onth or (Y)ear
-        };
-
-        String paymentType = "annuitet"; //annuitet(type 1) or different(type 2)
-
-        String[][] assertResults = {
-                {monthlyPaymentXpath, "0,02"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "0,01"}, // Сумма начисленных процентов
-                {totalPayXpath, "0,02"} // Общая стоимость кредита
-        };
-
-        CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
-    }
-
-    @Epic(value = "Регресс")
-    @Feature(value = "Проверка калькулятора расчета автокредита")
-    @Story(value = "Проверка граничных значений")
-    @Test(groups = {"regress"}, dependsOnMethods = {"AB0001", "AB0002"})
-    public void AB0010() {
-
-        //Входные данные
-        String[][] inputsData = {
-                {creditSumXpath,"0,01"}, // Сумма кредита
-                {periodXpath, "1"}, // Период кредитования
-                {percentXpath, "999,99"} // Процентная ставка
-        };
-
-        String[][] selectPeriodType = {
-                {periodTypeSelectorXpath, "M"} // (M)onth or (Y)ear
-        };
-
-        String paymentType = "different"; //annuitet(type 1) or different(type 2)
-
-        String[][] assertResults = {
-                {monthlyPaymentXpath, "0,02 … 0,02"}, // Сумма ежемесячного платежа
-                {overPaymentXpath, "0,01"}, // Сумма начисленных процентов
-                {totalPayXpath, "0,02"} // Общая стоимость кредита
-        };
-
-        CalcTestConstructor(inputsData, selectPeriodType, paymentType, assertResults);
     }
 }
