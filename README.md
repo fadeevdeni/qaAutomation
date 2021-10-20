@@ -17,11 +17,11 @@
 
 > Для автоматизации отчетов автотестов подключим фреймворк от Яндекс - **Allure**.
 
-![Allure report](https://downloader.disk.yandex.ru/preview/1e69477e38b5b318a25410e2216f9dbe16ce6a9da58f6007babd03168ed548c9/6152572f/luDh0VO2X79FyZgJ9cKczajdWspgKZai9GGp7xPHmIYBjueMEGp_fEhFnkGImaawJbVUWhgGhXzCYlvGR8ZtBg%3D%3D?uid=0&filename=2021-09-27_22-43-35.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Allure report](https://downloader.disk.yandex.ru/preview/6bdc7d9c8278d51017f0dafa13482fa3519836f99bf20595b8e9bedc6f24bbe5/616f504d/nJ3O6JSlzFY6bqmy0qja4JB-Ji0AfnUCR5QhNxozvMx51wZ7MywyvyfeQg6R8mbP0p80ifRuRn1rrL83PUYZYw%3D%3D?uid=0&filename=2021-10-19_22-09-55.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 > Кросс-браузерное тестирование реализовано через передачу значения переменной browser в настройках профилей запуска тестов.
 
-![TestNg configeuration](https://downloader.disk.yandex.ru/preview/d702edf5c290a617408f92fa182e6167ea3f8633c1b505d484f3304b2e540ba6/615257c0/IwMLOXTzZRAvOLw3pXfqEO8PuN4Y4_pCjMNY84PS8LhpxxAVnWcayfGv6Op0ErVD2IBrP6ArUw9UWPbzG0UiuA%3D%3D?uid=0&filename=2021-09-27_22-45-58.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![TestNg configeuration](https://downloader.disk.yandex.ru/preview/9ba13029e9fcf9801a47decfc4f8d84a31bbee7268cabed8838e63a68b06bb4e/616f50e5/FOIh-zcWpw_3nyXS30m8tG6QtEfl5pn2F7s7Mh0TGwIudjPa1BSJVjIYIQwAOv0dte0dOsiUKP3LHg0wjZaGyQ%3D%3D?uid=0&filename=2021-10-19_22-12-26.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 
 ## Тест-анализ
@@ -33,9 +33,9 @@
 
 Форма авторизации открывается во всплывающем окне. Ссылка открытия формы авторизации находится в хэдере сайта на каждой странице.
 
-![Login link](https://downloader.disk.yandex.ru/preview/80a0062e8dd48814f95d2ea4c55e6c5f06c543826c76b6b3f2fd89538c2923aa/61428c09/MEhmSNxaa4uhtFBJO5DaAG8PS-_hcJZgPRpZ2x4En3Cbc6M87QgreKx30euV5nVTWp_pRNLGE0_SecCCoA3Pbg%3D%3D?uid=0&filename=2021-09-15_23-12-35.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=1860x907)
+![Login link](https://downloader.disk.yandex.ru/preview/fa5db2b4ef4d9d74571a906066255e9a27fe14780ba952b86c5723c3fc5358a9/616f5118/FBT5NsuDdbVs9xe30YK04iEorepCdoOzJxdZ6UGTGLQQOL7aniYArz4ndiKxt5i2THF9j7_MACKfTLYhvg2AAA%3D%3D?uid=0&filename=2021-10-19_22-13-19.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
-![Authorization form](https://downloader.disk.yandex.ru/preview/5edd64a4b439e0862e2a862d0f59fd0c01663c4f5f7348c5e44f49326354e1e3/61428bc4/bpB0U1Af80Zo0ADbkMZT9vhaqn_ES3ZOf7gXL_XoopzS8IMXxBfI3I_SDYMovxMbxenhl3LvRXnuSUHYCxVFwQ%3D%3D?uid=0&filename=2021-09-15_23-10-27.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Authorization form](https://downloader.disk.yandex.ru/preview/43d83f6f051f26fe2273a48c9c68600f4d6cf2514e422c11d4e8fc59a3f8254d/616f514b/Ep7c8w_h6douL5yz826qyqICur6dqQwEFxAuJOQ78Y0jQngjKL0trooSTbXzHkZF3-EyjvdO72dTR2ROdplW1w%3D%3D?uid=0&filename=2021-10-19_22-14-08.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 
 Поле|Обязательность|Требования
@@ -60,7 +60,7 @@ Email | Обязательное | Только буквы латинского 
 ### Внешний вид формы калькулятора
 
 
-![Car loan by loan cost](https://downloader.disk.yandex.ru/preview/864e21a74679e177fdd7498821f9e755817cb54a4e042e28801b82decf433b1f/61447005/M6AV8iyKeOnv4PTZgXJcXpL2tb8-f0KU7WSkdKQ0JjWIuNrN1jWHIbCneJBaEKqjL3wrXgQoinpI_XMj26KdRg%3D%3D?uid=0&filename=2021-09-17_09-37-53.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Car loan by loan cost](https://downloader.disk.yandex.ru/preview/ed48cd273f2eb9576be0934b90c85c2ec24537d286ff6973a332720f3db02d02/616f518e/j9-v8LgC4sho6dvQKJl5OaosMj73SaYpxzAl7Lyh5JSeGye7emPctNUdFxK7FUImPOb7mKbWAeFh4cyiTPSkAw%3D%3D?uid=0&filename=2021-10-19_22-15-20.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 
 **Описание полей**
@@ -81,7 +81,7 @@ Email | Обязательное | Только буквы латинского 
 На основе собранных в процессе анализа данных была составлена [таблица тестовых значений](https://docs.google.com/spreadsheets/d/1ObiDpnMG2El1m_t4u9aFTRSNN1GMV94aHXn7NbqvsSI/edit?usp=sharing).
 
 
-![Test data](https://downloader.disk.yandex.ru/preview/d9d66692302869bb46471f4fa279351c0606d37087e84a44cec304cd780445e4/6149dd32/MB4MJYKkhC8SVGi70VrdsZYLZqf3g3Ls2L1px8X3GS_Xo32XfMLKkHizvrfWGTcZgpboTt-_X7fbIbx_XQzTPQ%3D%3D?uid=0&filename=2021-09-21_12-24-59.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Test data](https://downloader.disk.yandex.ru/preview/f25595e1acf242b61c9b3912e24b0e88a4b58aae2eabe3f18caaf967c8690a3d/616f51cb/ctXqeQpsBUDa7_6tafCJmExOD_ufngeyZt2HM9cRutvbLvAwQ-kQxTINwdgYV2aW9u88sK9C5xJ8Ajus6gW86w%3D%3D?uid=0&filename=2021-10-19_22-16-19.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 
 По каждому полю ввода определили условия. Для каждого условия определены класса и типы эквивалентности. В соответствии с полученными данными подобраны тестовые значения.
@@ -99,7 +99,7 @@ Email | Обязательное | Только буквы латинского 
 Оптимизируем таблицу и убираем повторяющиеся значения. Результат переносим в другую [таблицу](https://docs.google.com/spreadsheets/d/1O1Ddav-YUVHTQTCn3H3eL8Vq82Nz2_jRjfHWKhf52g0/edit?usp=sharing) для наглядности.
 
 
-![Optimized test data](https://downloader.disk.yandex.ru/preview/af51ba4a3f726a2b535c6f1bde8df9ecf15f27ed57518b4f2033d69a66e29c73/614a703a/fRkI-4NoOU1Hemy8T1zR8OhrnzdAUyc7O1TL5TzzlrN6zld7guTK19vgReRojqnGJYV9ylfkGGNA17OJgXokCg%3D%3D?uid=0&filename=2021-09-21_22-52-16.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Optimized test data](https://downloader.disk.yandex.ru/preview/6cf6ad8914587faa2c49308b0a5e49584577d9382af670c095cd4397546d8072/616f5213/4a-DHjD6gDON3hNlAQN8Ycbu6AQiO44EPuxqk3BY-3Xq-Pj7S9BqjcgazNwWprYogOBtilMMKlUDw0jcp9fnLQ%3D%3D?uid=0&filename=2021-10-19_22-17-26.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 
 ### Финальный тестовый набор данных
@@ -108,7 +108,7 @@ Email | Обязательное | Только буквы латинского 
 Выбираем все полученные уникальные значения для каждого поля и переносим в другую [таблицу](https://docs.google.com/spreadsheets/d/19JYhOZvg3IUy6F1vktuP0XWFU1kQkEDs8nx5M4nAMtc/edit?usp=sharing).
 
 
-![Final data set](https://downloader.disk.yandex.ru/preview/16bad0e979549600a1092054134bf6c4dffac162737991710bf8d3595e250652/614a7be4/0W59DtL7BDPr8MSUqn0pa496-bzakS9WMg4GZnAxSNnqN5J5KS_sUIF2gvQUcFNo0n8BOrTsBmh3v6dkcQ72Uw%3D%3D?uid=0&filename=2021-09-21_23-42-06.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Final data set](https://downloader.disk.yandex.ru/preview/4f7f36904c00af9e0dbf99723669552cfa41b9d11f39b8fefe5d4bdc5cf27345/616f5253/S18z6AsdB7AHlaZyPsq3P7_1KpIRBnyIiUu9o0woVjuqWQ8sOpscq2kM1vi3g36_T_l-V6t11jMOQ1YfcZ_W1Q%3D%3D?uid=0&filename=2021-10-19_22-18-34.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 
 Для тестирования полей формы авторизации получаем 28 комбинаций пар Логин/Пароль.
@@ -142,7 +142,7 @@ Email | Обязательное | Только буквы латинского 
 
 Заносим их в отдельную [таблицу комбинированных тестовых значений](https://docs.google.com/spreadsheets/d/1O3_RfBnd_T2vQa9wMEx2THqiiHVyKnUaj_-HS7tXpyE/edit?usp=sharing)
 
-![Generated pairwise table](https://downloader.disk.yandex.ru/preview/17a5c043aa8f2a9932e9213807a10392b7b2dfb9b15c04d1d4e54153df9d3fd0/614bc708/BNZvTO8spSh1qWBmSsXNXCKODjft2_epuN5bT0Iv_M8Fl8lJjX8xT2SYoTTdxKawzEmxnFV_5hrkbU2YIgXOGA%3D%3D?uid=0&filename=2021-09-22_23-14-45.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![Generated pairwise table](https://downloader.disk.yandex.ru/preview/e0cba5e0e8de74e121dd58c6212e3398ffea0bff73d23fd8d28fda6dab700414/616f5287/6dEwLebhNaQ_Fi-ejIgv-H7agppllraUIhOkLXPkks0BdgaerSjmRuvJQdJyakQsz1d_Q82IHS7cgAsNhgVemQ%3D%3D?uid=0&filename=2021-10-19_22-19-28.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 ### Ожидаемые результаты
 
@@ -152,7 +152,7 @@ Email | Обязательное | Только буквы латинского 
 
 В учебных целях будут прописаны тест кейсы только для успешных вариантов и некоторой части неуспешных.
 
-![expected result](https://downloader.disk.yandex.ru/preview/a343138c024cc31755d49341ec4b31e692a8e8cef0918b1ca64c17c2c131ed88/614d1414/6Gy4O-JTNNVpoYjAb-CJmkbzOzLMkyOxh50waq8FrNqnzFaczjfT18-HlcCQa_7v5XZp_b3USI4ftmAMhH5CEw%3D%3D?uid=0&filename=2021-09-23_22-55-55.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
+![expected result](https://downloader.disk.yandex.ru/preview/76ca03483716eaf2cc07cd0a066328adb8e7032edb4c6145970b747cc83ce33d/616f52b9/bnUMjA0V1rotuYgP3Ndnvdk2eMqn0f7vrTiSSzpE8teV_EItDiU-BCXP-z6aLGPPi7a3DZMujKEWDb7sc3qzRw%3D%3D?uid=0&filename=2021-10-19_22-20-20.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048)
 
 ## Тест-кейсы
 
