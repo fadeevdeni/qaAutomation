@@ -3,10 +3,10 @@ package Utils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,20 +31,17 @@ public class ApplicationManager {
 
     }
 
-    @Step(value = "Сравнить ожидаемое значение тэга <title> с актуальным")
-    public void CheckTitle(String expectedTitle) {
+    @Step(value = "Получить значение тэга <title>")
+    public String GetTitle() {
 
-        Assert.assertEquals(driver.getTitle(), expectedTitle);
+        return driver.getTitle();
 
     }
-    @Step(value = "Проверяем существование элементов на странице")
-    public void CheckInputs(String[] inputXpaths ) {
 
-        for (String inputXpath : inputXpaths) {
+    @Step(value = "Находим элемент")
+    public WebElement GetElementByXpath(String inputXpath) {
 
-            Assert.assertNotNull(By.xpath(inputXpath).findElement(driver));
-
-        }
+        return driver.findElement(By.xpath(inputXpath));
 
     }
 
@@ -55,73 +52,24 @@ public class ApplicationManager {
 
     }
 
-    @Step(value = "Заполняем поля формы")
-    public void FillInInputs(String[][] inputs) {
-
-        for (String[] items : inputs) {
-            driver.findElement(By.xpath(items[0])).sendKeys(items[1]);
-
-        }
-
-    }
-
     @Step(value = "Выбираем селектор")
-    public void SelectElement(String[][] selectors) {
+    public void SelectElementByXpath(String selectorXpath, String selectorValue) {
 
-        for (String[] select : selectors) {
-            Select selector = new Select(driver.findElement(By.xpath(select[0])));
-            selector.selectByValue(select[1]);
-
-        }
+        Select selector = new Select(driver.findElement(By.xpath(selectorXpath)));
+        selector.selectByValue(selectorValue);
     }
 
-    @Step(value = "Ожидаем результат")
-    public void WaitElements(String[][] waitElements) {
+    @Step(value = "Ожидаем элемент")
+    public void WaitElementByXpath(String waitElementXpath) {
 
-        WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(10));
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        wait.withTimeout(Duration.ofSeconds(30));
+        wait.pollingEvery(Duration.ofSeconds(1));
 
-        for (String[] waitElement : waitElements) {
-
-            waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(waitElement[0])));
-
-        }
-    }
-
-    @Step(value = "Ожидаем результат")
-    public void WaitElement(String waitElementXpath) {
-
-        WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(waitElementXpath)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(waitElementXpath)));
 
     }
 
-    @Step(value = "Сравниваем полученные результаты")
-    public void AssertResults(String[][] assertElements) {
-
-        for (String[] assertElement : assertElements) {
-
-            Assert.assertEquals(driver.findElement(By.xpath(assertElement[0])).getText(), assertElement[1].trim());
-
-        }
-    }
-
-    @Step(value = "Сравниваем полученный результат")
-    public void AssertResult(String assertElementXpath, String assertElement) {
-
-            Assert.assertEquals(driver.findElement(By.xpath(assertElementXpath)).getText(), assertElement.trim());
-    }
-
-    @Step(value = "Проверяем ошибки валидации")
-    public void AssertValidationErrors(String[][] validationErrors) {
-
-        for (String[] validationError : validationErrors) {
-
-            Assert.assertEquals(driver.findElement(
-                    By.xpath(validationError[0])).getAttribute("validationMessage"), validationError[1].trim());
-
-        }
-    }
 
     //Парсинг CSV файла с данными.
     public Iterator<Object[]> parseCsvData(String fileName) throws IOException {

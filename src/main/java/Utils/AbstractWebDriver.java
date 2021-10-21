@@ -12,7 +12,7 @@ public class AbstractWebDriver {
     public WebDriver driver;
 
     //Устанавливаем время ожидания ответа страницы
-    private static final Integer webDriverWaitTime = 10;
+    private static final Integer webDriverWaitTime = 3;
 
     private static final String webDriversPath = "src/webdrivers/";
 
